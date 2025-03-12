@@ -1,0 +1,166 @@
+/* --- پس‌زمینه‌ی صفحه با گرادینت نرم --- */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+}
+
+/* --- کانتینر اصلی اپلیکیشن --- */
+.app {
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* --- تیتر اصلی --- */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- نوار جستجو --- */
+.search-bar {
+  display: flex; /* قرار دادن input و button در یک خط */
+  align-items: center; /* هم‌راستایی عمودی */
+  justify-content: center; /* مرکز چین کردن */
+  gap: 10px; /* فاصله بین input و button */
+  width: 100%; /* عرض کامل برای این بخش */
+}
+
+.search-bar input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 50%; /* عرض فیلد ورودی */
+  transition: 0.3s;
+  margin-right: 5px;
+}
+
+.search-bar input:focus {
+  transform: scale(1.05);
+}
+
+.search-bar button {
+  padding: 12px 15px;
+  font-size: 16px;
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: auto; /* عرض خودکار دکمه */
+}
+
+.search-bar button:hover {
+  background-color: #ff6a00;
+}
+
+
+/* --- کارت وضعیت آب‌وهوا --- */
+.weather-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-card h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* --- استایل آیکون‌های آب‌وهوا --- */
+.weather-card img {
+  width: 100px;
+  height: 100px;
+}
+
+/* --- انیمیشن fadeIn برای ظاهر شدن کارت --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- لایه‌ی ابرها --- */
+.clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* --- استایل عمومی ابرها --- */
+.cloud {
+  position: absolute;
+  top: 20%;
+  width: 300px;
+  opacity: 0.8;
+}
+
+/* --- تنظیم اولیه برای شروع ابرها --- */
+.cloud-1 {
+  top: 10%;
+  left: -200px;
+  animation: moveClouds 35s linear infinite; /* کاهش سرعت حرکت ابرها */
+}
+
+.cloud-2 {
+  top: 40%;
+  left: -300px;
+  animation: moveClouds 40s linear infinite; /* کاهش سرعت حرکت ابرها */
+}
+
+.cloud-3 {
+  top: 70%;
+  left: -250px;
+  animation: moveClouds 38s linear infinite; /* کاهش سرعت حرکت ابرها */
+}
+
+/* --- انیمیشن حرکت ابرها تا انتهای صفحه --- */
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1; /* تا لحظه آخر ابر مشخص باشه */
+  }
+  100% {
+    transform: translateX(100vw); /* حرکت تا انتهای صفحه */
+    opacity: 0; /* اینجا ابر کاملاً مخفی بشه */
+  }
+}
